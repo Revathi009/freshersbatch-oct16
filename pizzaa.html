@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pizaa delivery</title>
+        <link href="styles.css" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <h2>Order Pizzaa</h2>
+        </header>
+        <form class="form" name="myForm">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name"><br>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email"><br>
+
+            <h3>Toppings</h3>
+            <label class="container">Extra Cheese
+                <input type="checkbox" checked="checked">
+                <span class="checkmark"></span>
+              </label>
+              <label class="container">Olives
+                <input type="checkbox">
+                <span class="checkmark"></span>
+              </label>
+              <label class="container">Pepper
+                <input type="checkbox">
+                <span class="checkmark"></span>
+              </label>
+              <label class="container">Mushrooms
+                <input type="checkbox">
+                <span class="checkmark"></span>
+              </label>
+              <label class="container">Peparoni
+                <input type="checkbox">
+                <span class="checkmark"></span>
+              </label>
+            <br>
+              <h3>How do you want to get your pizaa!</h3>
+              <input type="radio" id="delivery" name="delivery" value="delivery">
+              <label for="delivery">Delivery</label><br>
+              <input type="radio" id="pickup" name="delivery" value="pickup">
+              <label for="pickup">Pickup</label><br>  
+
+              <h3>Tip ?</h3>
+              <select id="tip" name="tip">
+                  <option value="10">10%</option>
+                  <option value="20">20%</option>
+                  <option value="30">30%</option>
+              </select>
+            <hr>
+            <p>Address</p>
+            <textarea id="address" class="input-textarea" name="address" rows="7" cols="25"  ></textarea>
+            <br>
+            <input type="submit" value="Submit" class="submit-button">
+            <input type="reset" value="reset" class="reset-button">
+            <button type="button">Show Summary</button>
+
+        </form>
+    </body>
+</html>
