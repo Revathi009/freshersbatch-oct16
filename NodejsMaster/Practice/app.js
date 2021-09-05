@@ -1,8 +1,11 @@
+//Generally the module name and the variable name both are same
 var fs = require('fs');
 
-var file = fs.readFile('input.txt','utf8',function(err,data){
-    fs.writeFile('writeme.txt',data);
-    console.log(data);
-});
+// fs.readFileSync
+// Sync' part allows the node to read the file synchronusly meaning all file is read first before going through other code. 
+var sample = fs.readFileSync('sample.txt','utf8');
+// utf8 is encoding format| you can find clean explanation here at http://stackoverflow.com/a/15128103/5388823 
+console.log(sample);
 
-console.log('This is an instruction outside the sync file system.');
+// this line of code creates an another file output.txt and writes the data in sample into the log.
+fs.writeFileSync('output.txt',sample);
