@@ -1,0 +1,84 @@
+body{
+    background-color: rgb(202, 241, 241);
+}
+#h{
+    background-color: rgb(43, 128, 226);
+    padding-bottom: 15px;
+}
+#d{
+    background-color: rgb(132, 155, 168);
+}
+#p1{
+    background-color: rgb(202, 241, 241);
+    padding: 10px;
+}
+h2{
+    text-decoration: line-through;
+}
+h3{
+    text-decoration: underline;
+}
+#p2{
+    text-transform: uppercase;
+}
+p{
+    font-family: sans-serif;
+}
+/* unvisited link */
+a:link {
+    color: red;
+  }
+  
+  /* visited link */
+a:visited {
+    color: purple;
+  }
+  
+  /* mouse over link */
+a:hover {
+    color: hotpink;
+  }
+  
+  /* selected link */
+a:active {
+    color: blue;
+  }
+table,tr,td{
+    border: 1px solid black;
+    border-collapse: collapse;
+    
+}
+#p3{
+    border: 6px solid black;   
+}
+#p4{
+    border: 4px solid black;
+}
+#p5{
+    border: 2px solid black;
+}
+.table{
+    background-color: green;
+    color: white;
+    border: 2px solid limegreen;
+    text-decoration: none;
+    font-weight:normal;    
+}
+/* .head{
+    border: 2px solid white;
+} */
+.tr{
+    background-color: white;
+    color: black;
+    border: 2px solid limegreen;
+}
+.td{
+    border: 2px solid limegreen;
+}
+.text{
+    border: 1px solid red;
+    outline-style: dotted;
+    outline-color: limegreen;
+    
+
+}
