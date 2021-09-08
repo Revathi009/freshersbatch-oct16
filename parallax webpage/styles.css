@@ -1,0 +1,86 @@
+.parallax{
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 500px;
+    background-image: url(img/background.jpg);
+    opacity: 1;
+    
+}
+.parallax1{
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 700px;
+    background-image: url(img/service.jpg);
+    opacity: 0.8;
+}
+.parallax2{
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 700px;
+    background-image: url(img/leads.jpg);
+    opacity: 0.8;
+    
+}
+.parallax3{
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 500px;
+    background-image: url(img/ecommerce.jpg);
+    opacity: 0.8;
+    
+}
+.parallax4{
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 500px;
+    background-image: url(img/contact-1.jpg);
+    opacity: 0.8;
+    
+}
+.welcome{
+    position: absolute;
+    top: 10%;
+    width: 100%;
+    text-align: center;
+    color: #000;
+    font-size: 27px;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+}
+
+
+header{
+    background-color: rgb(202, 162, 52);
+    padding: 10px;
+    text-align: center;
+    text-decoration: underline;
+}
+h2{
+    background: black;
+    color: white;
+}
+/* .scroll{ */
+    /* height: 1000px;
+    font-size: 30px;
+    text-align: center;
+    /* background-color:rgb(15, 7, 9); */
+    /* color: white; */ 
+/* } */
+
+
+
+h3{
+    text-decoration: underline;
+    padding-top: 20px;
+
+}
