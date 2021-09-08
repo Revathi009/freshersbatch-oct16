@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HTML Forms</title>
+        <link href="styles.css" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <h2>Application Form</h2>
+        </header>
+        <div class="content">
+        <form class="form">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="fname"><br>
+
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="lname"><br>
+
+            <label for="email">Email Add</label>
+            <input type="email" id="email" name="email"><br>
+
+            <label for="password">Password</label>
+            <input type="password" class="pass" id="password" name="password"><br>
+
+            <h3>Select you age</h3>
+            <input type="radio" id="age1" name="age" value="30">
+            <label for="age1">0 - 30</label><br>
+            <input type="radio" id="age2" name="age" value="60">
+            <label for="age2">31 - 60</label><br>  
+            <input type="radio" id="age3" name="age" value="100">
+            <label for="age3">61 - 100</label><br><br>
+
+            <h3>Select your country</h3>
+            <select id="country" name="country">
+                <option value="au">India</option>
+                <option value="ca">Canada</option>
+                <option value="usa">USA</option>
+            </select>
+            <br>
+            <h3>You are interested in ? </h3>
+            <label class="container">Html,CSS
+                <input type="checkbox" checked="checked">
+                <span class="checkmark"></span>
+              </label>
+              <label class="container">Java
+                <input type="checkbox">
+                <span class="checkmark"></span>
+              </label>
+              <label class="container">C,C++
+                <input type="checkbox">
+                <span class="checkmark"></span>
+              </label>
+              <label class="container">Python
+                <input type="checkbox">
+                <span class="checkmark"></span>
+              </label>
+            <br>
+            <p>Tell us about yourself in few lines !</p>
+            <textarea id="bio" class="input-textarea" name="Bio" ></textarea>
+            <br>
+            <input type="submit" value="Submit" class="submit-button">
+        </form>
+        </div>
+    </body>
+</html>

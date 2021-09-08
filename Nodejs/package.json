@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "concat-stream": "^2.0.0",
+    "lite-server": "^2.6.1",
+    "moment": "^2.29.1",
+    "strftime": "^0.10.0"
+  },
+  "name": "nodejs",
+  "version": "1.0.0",
+  "main": "1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm start"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
