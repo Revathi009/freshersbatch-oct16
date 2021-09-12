@@ -1,4 +1,16 @@
 
+<div>
+	<p *ngFor= "let p of lstproducts">
+		<li>{{p.name}}</li>
+		<img src="/assets/img/shop01.png" alt="">
+		<li>{{p.brand}}</li>
+		<li>{{p.category}}</li>
+		<li>{{p.description}}</li>
+	</p>
+</div>
+
+
+
 		<!-- SECTION -->
 		<div class="section">
 			<!-- container -->
@@ -80,16 +92,21 @@
 					<div class="col-md-12">
 						<div class="row">
 
-							<div class="col-md-4 col-sm-6" *ngFor="let p of products">
+							<!-- <div class="col-md-4 col-sm-6" *ngFor="let products of product">
 								<div class="card my-2">
-								  <img src="/assets/img/product01.png" alt="{{p.name}}" width="200px" class="card-img-top" style="cursor:pointer;">
+								  <img [src]="products.image" alt="{{products.name}}" width="200px" class="card-img-top" (click)="selectProduct(products.id)" style="cursor:pointer;">
 								  <div class="card-header">
 									<div class="card-title">
-									  <p>{{p.name | titlecase}}</p>
+									  <p>{{products.name | titlecase}}</p>
 									</div>
 								  </div>
+								  <div class="card-body">
+									<h6>{{products.description.substr(0, 40)}} ....</h6>
+									<p class="lead">{{products.price | currency:'USD'}}</p>
+								  </div>
 								</div>
-							</div>
+							</div> -->
+
 							<!-- <div class="products-tabs"> -->
 								<!-- tab -->
 								<!-- <div id="tab1" class="tab-pane active"> -->

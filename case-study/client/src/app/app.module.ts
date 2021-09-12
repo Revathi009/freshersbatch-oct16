@@ -10,6 +10,11 @@ import { ProductComponent } from './components/product/product.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { ProductService } from './services/product.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegisterComponent } from './components/register/register.component';
+// import { MatButtonModule, MatFormFieldModule, MatInputModule, MatRippleModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -19,14 +24,22 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     HomeComponent,
     ProductComponent,
     FooterComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
-  ],
-  providers: [],
+    HttpClientModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    // MatButtonModule,
+    // MatFormFieldModule,
+    // MatInputModule,
+    // MatRippleModule
+    ],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
