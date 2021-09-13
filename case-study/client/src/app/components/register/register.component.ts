@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormGroup, FormControl, Validators } from '@angular/forms';
+import { RegisterService } from 'src/app/services/register.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -9,11 +11,13 @@ import { AbstractControl, FormGroup, FormControl, Validators } from '@angular/fo
 export class RegisterComponent implements OnInit {
 
   public myForm: FormGroup;
-  public successMessage = "Successfully registered";
-  constructor() {
+  public successMessage = "";
+  constructor(private _registerservice:RegisterService,
+    private _router: Router,
+    private _activatedRoute: ActivatedRoute) {
     this.myForm = new FormGroup({
       email: new FormControl(null, Validators.email),
-      name: new FormControl(null, Validators.required),
+      username: new FormControl(null, Validators.required),
       password: new FormControl(null, Validators.required),
       cnfpass: new FormControl(null, this.passValidator)
     })
@@ -48,6 +52,23 @@ export class RegisterComponent implements OnInit {
     }
 
     return null;
+  }
+
+  register(){
+    console.log(this.myForm.value);
+
+    if(this.myForm.valid){
+    this._registerservice.submitRegister(this.myForm.value)
+    .subscribe(
+      data => this.successMessage = "Successfully Registered",
+      error => this.successMessage = "Error"
+      
+    )
+    }
+  }
+
+  movetologin() {
+    this._router.navigate(['../login'], { relativeTo: this._activatedRoute });
   }
 
 }

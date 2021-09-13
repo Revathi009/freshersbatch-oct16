@@ -14,6 +14,9 @@ import { ProductService } from './services/product.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './components/register/register.component';
+import { RegisterService } from './services/register.service';
+import { LoginComponent } from './components/login/login.component';
+import { LoginService } from './services/login.service';
 // import { MatButtonModule, MatFormFieldModule, MatInputModule, MatRippleModule } from '@angular/material';
 
 @NgModule({
@@ -25,7 +28,8 @@ import { RegisterComponent } from './components/register/register.component';
     ProductComponent,
     FooterComponent,
     CheckoutComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +43,7 @@ import { RegisterComponent } from './components/register/register.component';
     // MatInputModule,
     // MatRippleModule
     ],
-  providers: [ProductService],
+  providers: [ProductService, RegisterService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
