@@ -1,9 +1,11 @@
 export interface ProductModelServer {
+
     name: string;
     image: string;
-    brand: string;
+    price: number;
     category: string;
     description: string;
+    
 }
 
 

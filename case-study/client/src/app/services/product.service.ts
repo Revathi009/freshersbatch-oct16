@@ -9,19 +9,18 @@ import { Observable } from 'rxjs';
 })
 export class ProductService {
 
-  private SERVER_URL = environment.SERVER_URL;
+  // private SERVER_URL = environment.SERVER_URL;
   constructor(private http: HttpClient,
     private router: Router) { }
 
     //fetch all products from backend 
-    getAllProducts(){
-      return this.http.get(this.SERVER_URL + '/products');
-    }
+    // getAllProducts(){
+    //   return this.http.get(this.SERVER_URL + '/products');
+    // }
 
     getProductModelServe(): Observable<any> {
       return this.http.get("http://localhost:3000/api/products")
       
     }
-
 
 }

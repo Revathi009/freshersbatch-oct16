@@ -8,7 +8,7 @@ router.post("/products", (req, res) => {
     var newproducts = {
         name: req.body.name,
         image: req.body.image,
-        brand: req.body.brand,
+        price: req.body.price,
         category: req.body.category,
         description: req.body.description
     }

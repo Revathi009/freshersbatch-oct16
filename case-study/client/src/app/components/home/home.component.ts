@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
 import { ProductModelServer, ServerResponse } from 'src/app/models/product.model';
 import { LoginService } from 'src/app/services/login.service';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-home',
@@ -12,19 +13,20 @@ import { LoginService } from 'src/app/services/login.service';
 export class HomeComponent implements OnInit {
 
   products: [] = [];
-  lstproducts: ProductModelServer[] = [];
+  public lstproducts: any[] = [];
   username = '';
 
 
-  constructor(private productService: ProductService,
+  constructor(private _productService: ProductService,
               private _router: Router,
-              private _loginservice:LoginService) {
+              private _loginservice:LoginService,
+              private _cartService: CartService) {
 
-this._loginservice.getUserName()
-    .subscribe(
-                data => this.username= data.toString(),
-                error => this._router.navigate(['../login'])
-              )
+// this._loginservice.getUserName()
+//     .subscribe(
+//                 data => this.username= data.toString(),
+//                 error => this._router.navigate(['../login'])
+//               )
 }
               
 logout(){
@@ -33,22 +35,26 @@ logout(){
 }  
         
   ngOnInit(): void {
-    this.getAllProducts();
-    this.productService.getProductModelServe()
-    .subscribe(
-      data => {
+    // this.getAllProducts();
+    this._productService.getProductModelServe().subscribe(data => {
         this.lstproducts = data;
-      }
-    )
 
+        this.lstproducts.forEach((a:any) => {
+          Object.assign(a,{quantity:1, total:a.price});
+        })
+    })
   }
 
-  getAllProducts(){
-      this.productService.getAllProducts().subscribe((response) => {
-        console.log('Response from API is', response);
-      },(error) => {
-        console.log('Error is', error);
-      })
+  addtoCart(p: any){
+    this._cartService.addtoCart(p);
   }
+
+  // getAllProducts(){
+  //     this._productService.getAllProducts().subscribe((response) => {
+  //       console.log('Response from API is', response);
+  //     },(error) => {
+  //       console.log('Error is', error);
+  //     })
+  // }
 
 }

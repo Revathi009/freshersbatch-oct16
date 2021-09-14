@@ -15,8 +15,8 @@ const ProductSchema = new Schema(
       image: {
         type: String
       },
-      brand: {
-        type: String
+      price: {
+        type: Number
       },
       category: {
         type: String
