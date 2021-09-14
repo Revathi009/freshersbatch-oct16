@@ -1,25 +1,25 @@
-<p>login works!</p>
-<div class="formcontainer">
+<div class="container-fluid">
     <div class="formbody">
-        <form style="width:100%;" [formGroup]="loginForm">
-            <div class="header">Welcome</div>
-            <div>
-                <input type="text" formControlName="email" matInput placeholder="Username">
+        <form class="border border-light p-5" style="width:100%;" [formGroup]="loginForm">
+            <div class="header h4 mb-4">Welcome</div>
+            <div class="form-group">
+                <input type="text" class="form-control" formControlName="email" matInput placeholder="Username">
                 <span>Username cannot be blank</span>
             </div>
-            <div>
-                <input type="password" formControlName="password" matInput placeholder="Password">
+            <div class="form-group">
+                <input type="password" class="form-control" formControlName="password" matInput placeholder="Password">
                 <span>Password cannot be blank</span>
             </div>
             <div style="margin-top:40px;">
-                <button class="form-btn"(click)="login()">Sign In</button>
+                <button type="button" class="btn btn-danger btn-lg active" (click)="login()">Sign In</button>
+                <button style="margin-left: 7px" type="button" class="btn btn-primary btn-lg active" aria-pressed="true" (click)="movetoregister()">Register</button>
             </div>
         </form>
     </div>
 
-    <div>
+    <!-- <div>
         <div style="width: 290px; padding: 20px;">
-            <button class="form-btn-hollow" (click)="movetoregister()">Register</button>
+            <button type="button" class="btn btn-primary btn-lg active" aria-pressed="true" class="form-btn-hollow" (click)="movetoregister()">Register</button>
         </div>
-    </div>
+    </div> -->
 </div>

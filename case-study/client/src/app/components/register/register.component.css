@@ -1,4 +1,4 @@
-.formcontainer{
+.container-fluid{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -7,20 +7,20 @@
 
 .formbody{
     display: flex;
-    width: 290px;
+    width: 1000px;
     min-height: 200px;
     background-color: white;
     box-shadow:0 5px 10px 0px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    padding: 25px;
+    padding: 25px; 
 }
 
 
-  .header{
+.header{
       font-size: 2rem;
       text-align: center;
       margin-bottom: 20px;      
-  }
+}
 
 div > span {
     font-size: 0.75rem;

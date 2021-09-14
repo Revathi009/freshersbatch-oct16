@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const Product = require('../models/productModel.js');
-const productCtrl = require('../controllers/productCtrl');
-
 
 router.post("/products", (req, res) => {
     var newproducts = {

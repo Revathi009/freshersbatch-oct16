@@ -8,6 +8,7 @@ export class CartService {
 
   public cartItemList : any =[]
   public lstproducts = new BehaviorSubject<any>([]);
+  public search = new BehaviorSubject<string>("");
   
   constructor() { }
   getProducts(){

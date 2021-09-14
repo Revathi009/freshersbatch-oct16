@@ -17,6 +17,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { RegisterService } from './services/register.service';
 import { LoginComponent } from './components/login/login.component';
 import { LoginService } from './services/login.service';
+import { FilterPipe } from './shared/filter.pipe';
 // import { MatButtonModule, MatFormFieldModule, MatInputModule, MatRippleModule } from '@angular/material';
 
 @NgModule({
@@ -29,7 +30,8 @@ import { LoginService } from './services/login.service';
     FooterComponent,
     CheckoutComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

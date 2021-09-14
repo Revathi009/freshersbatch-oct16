@@ -15,6 +15,8 @@ export class HomeComponent implements OnInit {
   products: [] = [];
   public lstproducts: any[] = [];
   username = '';
+  searchKey:string = "";
+  public filterCategory: any;
 
 
   constructor(private _productService: ProductService,
@@ -38,15 +40,32 @@ logout(){
     // this.getAllProducts();
     this._productService.getProductModelServe().subscribe(data => {
         this.lstproducts = data;
-
+        this.filterCategory = data;
         this.lstproducts.forEach((a:any) => {
-          Object.assign(a,{quantity:1, total:a.price});
-        })
+        if(a.category ==="women's clothing" || a.category ==="men's clothing"){
+          a.category ="fashion"
+        }
+        Object.assign(a,{quantity:1, total:a.price});
+        });
+    });
+
+    this._cartService.search.subscribe((val:any) => {
+      this.searchKey = val;
     })
+
   }
 
   addtoCart(p: any){
     this._cartService.addtoCart(p);
+  }
+
+  filter(category:string){
+    this.filterCategory = this.lstproducts
+    .filter((a:any)=>{
+      if(a.category == category || category==''){
+        return a;
+      }
+    })
   }
 
   // getAllProducts(){

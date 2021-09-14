@@ -58,10 +58,11 @@ export class RegisterComponent implements OnInit {
     console.log(this.myForm.value);
 
     if(this.myForm.valid){
+    this._router.navigate(['../home'], { relativeTo: this._activatedRoute });
     this._registerservice.submitRegister(this.myForm.value)
     .subscribe(
       data => this.successMessage = "Successfully Registered",
-      error => this.successMessage = "Error"
+      error => this.successMessage = "Error",
       
     )
     }
