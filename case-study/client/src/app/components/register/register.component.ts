@@ -22,6 +22,7 @@ export class RegisterComponent implements OnInit {
       cnfpass: new FormControl(null, this.passValidator)
     })
 
+
     this.myForm.controls.password.valueChanges
       .subscribe(
         x => this.myForm.controls.cnfpass.updateValueAndValidity()

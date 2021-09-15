@@ -7,6 +7,7 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
+  [x: string]: any;
 
   public products: any = [];
   public grandTotal: number = 0;
@@ -25,5 +26,7 @@ export class CartComponent implements OnInit {
   emptycart(){
     this._cartSevice.removeAllCart();
   }
+
+
 
 }

@@ -13,7 +13,7 @@
                 <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
                 <li><a routerLink="/register"><i class="fa fa-user-o"></i>Register</a></li>
                 <li><a routerLink="/login"><i class="fa fa-arrow-circle-right"></i>Login</a></li>
-                <li><a href="#"><i class="fa fa-arrow-circle-right"></i>Logout</a></li>
+                <li (click)="logout()"><a routerLink="/login"><i class="fa fa-arrow-circle-right"></i>Logout</a></li>
             </ul>
         </div>
     </div>
@@ -35,8 +35,21 @@
                 </div>
                 <!-- /LOGO -->
 
+                <div class="col-lg-6 col-sm-12">
+                    <form action="#" class="search">
+                        <div class="input-group w-99">
+                            <input type="text" [(ngModel)]="searchTerm" name="search" (keyup)="search($event)" class="form-control" placeholder="Search">
+                            <div class="input-group-append">
+                              <button class="btn btn-danger" type="submit">
+                                <i class="fa fa-search"></i>
+                              </button>
+                            </div>
+                        </div>
+                    </form> <!-- search-wrap .end// -->
+                </div>
+
                 <!-- SEARCH BAR -->
-                <div class="col-md-6">
+                <!-- <div class="col-md-6">
                     <div class="header-search">
                         <form class="form-group">
                             <select class="input-select">
@@ -48,20 +61,20 @@
                                 <button class="search-btn">Search</button>
                         </form>
                     </div>
-                </div>
+                </div> -->
                 <!-- /SEARCH BAR -->
 
                 <!-- ACCOUNT -->
                 <div class="col-md-3 clearfix">
                     <div class="header-ctn">
                         <!-- Wishlist -->
-                        <div>
+                        <!-- <div>
                             <a href="#">
                                 <i class="fa fa-heart-o"></i>
                                 <span>Your Wishlist</span>
-                                <div class="qty">0</div>
+                                <div class="qty">{{totalItem}}</div>
                             </a>
-                        </div>
+                        </div> -->
                         <!-- /Wishlist -->
 
                         <!-- Cart -->
@@ -72,7 +85,7 @@
                                 <div class="qty">{{totalItem}}</div>
                             </a>
                             <div class="cart-dropdown">
-                                <div class="cart-list">
+                                <!-- <div class="cart-list">
                                     <div class="product-widget">
                                         <div class="product-img">
                                             <img src="./img/product01.png" alt="">
@@ -82,7 +95,7 @@
                                             <h4 class="product-price"><span class="qty">1x</span>0</h4>
                                         </div>
                                         <button class="delete"><i class="fa fa-close"></i></button>
-                                    </div>
+                                    </div> -->
 
                                     <!-- <div class="product-widget">
                                         <div class="product-img">
@@ -94,11 +107,11 @@
                                         </div>
                                         <button class="delete"><i class="fa fa-close"></i></button>
                                     </div> -->
-                                </div>
-                                <div class="cart-summary">
+                                <!-- </div> -->
+                                <!-- <div class="cart-summary">
                                     <small>3 Item(s) selected</small>
                                     <h5>SUBTOTAL: {{ 0 | currency}}</h5>
-                                </div>
+                                </div> -->
                                 <div class="cart-btns">
                                     <a routerLink="/cart">View Cart</a>
                                     <a routerLink="/checkout">Checkout <i class="fa fa-arrow-circle-right"></i></a>

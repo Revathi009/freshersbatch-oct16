@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CheckoutComponent implements OnInit {
 
+  public products: any = [];
   constructor() { }
 
   ngOnInit(): void {

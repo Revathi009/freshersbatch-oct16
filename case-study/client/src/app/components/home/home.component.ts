@@ -59,6 +59,8 @@ logout(){
     this._cartService.addtoCart(p);
   }
 
+
+
   filter(category:string){
     this.filterCategory = this.lstproducts
     .filter((a:any)=>{

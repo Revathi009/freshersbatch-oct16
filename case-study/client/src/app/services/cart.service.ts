@@ -18,6 +18,8 @@ export class CartService {
   setProduct(product : any){
     this.cartItemList.push(...product);
     this.lstproducts.next(product);
+   
+
   }
 
   addtoCart(product : any){
@@ -26,6 +28,7 @@ export class CartService {
     this.getTotalPrice();
     console.log(this.cartItemList)
   }
+
 
   getTotalPrice() : number{
     let grandTotal = 0;
