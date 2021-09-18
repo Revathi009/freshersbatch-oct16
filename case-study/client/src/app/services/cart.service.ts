@@ -18,8 +18,6 @@ export class CartService {
   setProduct(product : any){
     this.cartItemList.push(...product);
     this.lstproducts.next(product);
-   
-
   }
 
   addtoCart(product : any){

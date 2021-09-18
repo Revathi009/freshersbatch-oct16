@@ -12,6 +12,7 @@ export class RegisterComponent implements OnInit {
 
   public myForm: FormGroup;
   public successMessage = "";
+
   constructor(private _registerservice:RegisterService,
     private _router: Router,
     private _activatedRoute: ActivatedRoute) {
@@ -20,7 +21,7 @@ export class RegisterComponent implements OnInit {
       username: new FormControl(null, Validators.required),
       password: new FormControl(null, Validators.required),
       cnfpass: new FormControl(null, this.passValidator)
-    })
+    });
 
 
     this.myForm.controls.password.valueChanges
@@ -29,13 +30,17 @@ export class RegisterComponent implements OnInit {
       );
    }
 
+  
+
   ngOnInit(): void {
    
   }
 
-  // isValid(formcontrolName) {
-  //   return this.myForm.get('formcontrolName').invalid && this.myForm.get('formcontrolName').touched;
-  // }
+
+
+  isValid(controlName: string | (string | number)[]) {
+    return this.myForm.get(controlName).invalid && this.myForm.get(controlName).touched;
+  }
 
   passValidator(control: AbstractControl) {
     if (control && (control.value !== null || control.value !== undefined)) {
@@ -59,15 +64,15 @@ export class RegisterComponent implements OnInit {
     console.log(this.myForm.value);
 
     if(this.myForm.valid){
-    this._router.navigate(['../home'], { relativeTo: this._activatedRoute });
+    this._router.navigate(['../login'], { relativeTo: this._activatedRoute });
     this._registerservice.submitRegister(this.myForm.value)
     .subscribe(
       data => this.successMessage = "Successfully Registered",
       error => this.successMessage = "Error",
-      
     )
     }
   }
+  
 
   movetologin() {
     this._router.navigate(['../login'], { relativeTo: this._activatedRoute });

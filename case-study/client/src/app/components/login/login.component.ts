@@ -19,14 +19,16 @@ export class LoginComponent implements OnInit {
       email: new FormControl(null, Validators.required),
       password: new FormControl(null, Validators.required)
     })
+    
   }
 
   ngOnInit(): void {
+    
   }
 
-  // isValid(controlName: any) {
-  //   return this.loginForm.get(controlName).invalid && this.loginForm.get(controlName).touched;
-  // }
+  isValid(controlName: string | (string | number)[]) {
+    return this.loginForm.get(controlName).invalid && this.loginForm.get(controlName).touched;
+  }
 
   login(){
     console.log(this.loginForm.value);

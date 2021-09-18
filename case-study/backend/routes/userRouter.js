@@ -1,20 +1,3 @@
-// const router = require('express').Router()
-// const userCtrl = require('../controllers/userCtrl')
-// const auth = require('../middleware/auth')
-
-// // router.get('/refresh_token', userCtrl.refreshToken)
-
-// router.post("/register", userCtrl.register)
-
-// router.post('/login', userCtrl.login)
-
-// router.get('/logout', userCtrl.logout)
-
-// router.get('/infor', auth, userCtrl.getUser)
-
-// module.exports = router
-
-
 var express = require('express');
 var router = express.Router();
 var User = require('../models/userModel');
@@ -46,7 +29,7 @@ router.post('/login', function(req,res,next){
     if(doc) {
       if(doc.isValid(req.body.password)){
           // generate token
-          let token = jwt.sign({username:doc.username},'secret', {expiresIn : '3h'});
+          let token = jwt.sign({username:doc.username}, process.env.JWT_SECRET, {expiresIn : '1h'});
 
           return res.status(200).json(token);
 
@@ -70,17 +53,19 @@ router.get('/username', verifyToken, function(req,res,next){
 
 var decodedToken='';
 function verifyToken(req,res,next){
-  let token = req.query.token;
+  let token = req.headers.authorization;
 
-  jwt.verify(token,'secret', function(err, tokendata){
-    if(err){
-      return res.status(400).json({message:' Unauthorized request'});
-    }
+  jwt.verify(token, process.env.JWT_SECRET, function(err, tokendata){
     if(tokendata){
       decodedToken = tokendata;
       next();
     }
+    // else {
+    //   return res.status(400).json({message:' Unauthorized request'});
+    // }
   })
 }
+
+
 
 module.exports = router;

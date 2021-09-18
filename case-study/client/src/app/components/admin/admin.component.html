@@ -1,0 +1,81 @@
+<div class="section">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-9">
+                <div class="form">
+                  <div class="section-title">
+                    <form #adminForm="ngForm" (ngSubmit)="onSubmit(adminForm)">
+                    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="adminService.selectedProduct._id">
+                    <div class="form-group">
+                      <input class="form-control" type="text" name="name" #name="ngModel" [(ngModel)]="adminService.selectedProduct.name" placeholder="Enter product name" required>
+                    </div>
+                    <div class="form-group">
+                      <input class="form-control" type="text" name="name" #name="ngModel" [(ngModel)]="adminService.selectedProduct.image" placeholder="Add image" required>
+                    </div>
+                    <div class="form-group">
+                      <input class="form-control" type="text" name="price" #name="ngModel" [(ngModel)]="adminService.selectedProduct.price" placeholder="Enter price" required>
+                    </div>
+                    <div class="form-group">
+                      <input class="form-control" type="text" name="brand" #name="ngModel" [(ngModel)]="adminService.selectedProduct.category" placeholder="Enter Category" required>
+                    </div>
+                    <div class="form-group">
+                      <input class="form-control" type="text" name="description" #name="ngModel" [(ngModel)]="adminService.selectedProduct.description" placeholder="Enter description" required>
+                    </div>
+                    <div class="input-field col s12">
+                      <button class="btn btn btn-danger" type="button" (click)="resetForm(adminForm)">Reset</button>
+                      <button style="margin-left: 7px" class="btn btn btn-primary" type="submit" [disabled]="!adminForm.valid">Submit</button>
+                    </div>
+                    </form>
+                  </div>
+                </div>
+
+              <div>
+                <table class="responsive-table highlight">
+                  <thead>
+                    <tr class="topic">
+                      <th>Name</th>
+                      <th>Image</th>
+                      <th>Price</th>
+                      <th>Category</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tr *ngFor="let prod of adminService.products">
+                    <td>{{prod.name}}</td>
+                    <td>{{prod.image}}</td>
+                    <td>{{prod.price}}</td>
+                    <td>{{prod.category}}</td>
+                    <td>{{prod.description}}</td>
+
+                    <td>
+                      <button> 
+                        <a class="action-btn" (click)="onEdit(prod)">
+                            <i class="material-icons">edit</i>
+                        </a>
+                      </button> 
+                        <a class="action-btn" (click)="onDelete(prod._id,adminForm)">
+                          <i class="material-icons">delete</i>
+                        </a>
+                        <input type="file" id="image" (change)="onSelectedFile($event)" />
+                      <button> 
+                        <a class="action-btn" (click)="onUpload(prod)">
+                          <i class="material-icons">Upload</i>
+                        </a>
+                      </button> 
+                    </td>
+                  </tr>
+                </table>
+              </div> -->
+
+        </div>   
+
+          
+      </div>
+  </div>
+</div>
+
+
+
+
+
+

@@ -18,6 +18,9 @@ import { RegisterService } from './services/register.service';
 import { LoginComponent } from './components/login/login.component';
 import { LoginService } from './services/login.service';
 import { FilterPipe } from './shared/filter.pipe';
+import { OrderService } from './services/order.service';
+import { AdminComponent } from './components/admin/admin.component';
+import { AdminService } from './services/admin.service';
 // import { MatButtonModule, MatFormFieldModule, MatInputModule, MatRippleModule } from '@angular/material';
 
 @NgModule({
@@ -31,7 +34,8 @@ import { FilterPipe } from './shared/filter.pipe';
     CheckoutComponent,
     RegisterComponent,
     LoginComponent,
-    FilterPipe
+    FilterPipe,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +49,7 @@ import { FilterPipe } from './shared/filter.pipe';
     // MatInputModule,
     // MatRippleModule
     ],
-  providers: [ProductService, RegisterService, LoginService],
+  providers: [ProductService, RegisterService, LoginService, OrderService, AdminService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

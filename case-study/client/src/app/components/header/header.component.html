@@ -7,13 +7,16 @@
                 <li><a href="#"><i class="fa fa-phone"></i> +021-95-51-84</a></li>
                 <li><a href="#"><i class="fa fa-envelope-o"></i> email@email.com</a></li>
                 <li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
+
             </ul>
             <ul class="header-links pull-right">
                 <!-- <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li> -->
                 <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
-                <li><a routerLink="/register"><i class="fa fa-user-o"></i>Register</a></li>
-                <li><a routerLink="/login"><i class="fa fa-arrow-circle-right"></i>Login</a></li>
-                <li (click)="logout()"><a routerLink="/login"><i class="fa fa-arrow-circle-right"></i>Logout</a></li>
+                <li><a *ngIf="!loggedIn()" routerLink="/register" routerLinkActive="active"><i class="fa fa-user-o"></i>Register</a></li>
+                <li><a *ngIf="!loggedIn()" routerLink="/login" routerLinkActive="active"><i class="fa fa-arrow-circle-right"></i>Login</a></li>
+                <li><a *ngIf="loggedIn()" routerLink="/login" (click)="logoutUser()"><i class="fa fa-arrow-circle-right"></i>Logout</a></li>
+                <li><a routerLink="/admin"><i class="fa fa-user-o"></i> Admin</a></li>
+
             </ul>
         </div>
     </div>
@@ -163,3 +166,6 @@
     <!-- /container -->
 </nav>
 <!-- /NAVIGATION -->
+
+
+

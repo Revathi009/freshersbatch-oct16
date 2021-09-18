@@ -13,4 +13,12 @@ export class RegisterService {
       observe:'body'
     })
   }
+
+  Register(body:any){
+    return this._http.post('http://localhost:3000/admin/register', body, {
+      observe:'body'
+    })
+  }
+
+
 }

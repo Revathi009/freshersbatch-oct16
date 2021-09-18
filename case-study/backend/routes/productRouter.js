@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Product = require('../models/productModel.js');
+const Product = require('../models/productModel');
 
 router.post("/products", (req, res) => {
     var newproducts = {
@@ -39,6 +39,16 @@ router.get("/products/:id", (req,res) => {
         }else{
             res.sendStatus(404);
         }
+    }).catch(err => {
+        if(err){
+            throw err;
+        }
+    })
+})
+
+router.delete("/products/:id", (req,res) => {
+    Product.findOneAndRemove(req.params.id).then(()=> {
+        res.send("Product removed with success!")
     }).catch(err => {
         if(err){
             throw err;
