@@ -8,17 +8,17 @@ export class CartService {
 
   public cartItemList : any =[]
   public lstproducts = new BehaviorSubject<any>([]);
-  public search = new BehaviorSubject<string>("");
+  // public search = new BehaviorSubject<string>("");
   
   constructor() { }
   getProducts(){
     return this.lstproducts.asObservable();
   }
 
-  setProduct(product : any){
-    this.cartItemList.push(...product);
-    this.lstproducts.next(product);
-  }
+  // setProduct(product : any){
+  //   this.cartItemList.push(...product);
+  //   this.lstproducts.next(product);
+  // }
 
   addtoCart(product : any){
     this.cartItemList.push(product);

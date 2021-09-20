@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CartComponent } from './components/cart/cart.component';
 import { HomeComponent } from './components/home/home.component';
-import { ProductComponent } from './components/product/product.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CheckoutComponent } from './components/checkout/checkout.component';
@@ -17,12 +16,11 @@ import { RegisterComponent } from './components/register/register.component';
 import { RegisterService } from './services/register.service';
 import { LoginComponent } from './components/login/login.component';
 import { LoginService } from './services/login.service';
-import { FilterPipe } from './shared/filter.pipe';
 import { OrderService } from './services/order.service';
 import { AdminComponent } from './components/admin/admin.component';
 import { AdminService } from './services/admin.service';
 import { FileUploadModule } from 'ng2-file-upload';
-// import { MatButtonModule, MatFormFieldModule, MatInputModule, MatRippleModule } from '@angular/material';
+import { CartService } from './services/cart.service';
 
 @NgModule({
   declarations: [
@@ -30,12 +28,10 @@ import { FileUploadModule } from 'ng2-file-upload';
     HeaderComponent,
     CartComponent,
     HomeComponent,
-    ProductComponent,
     FooterComponent,
     CheckoutComponent,
     RegisterComponent,
     LoginComponent,
-    FilterPipe,
     AdminComponent
   ],
   imports: [
@@ -45,13 +41,10 @@ import { FileUploadModule } from 'ng2-file-upload';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    FileUploadModule
-    // MatButtonModule,
-    // MatFormFieldModule,
-    // MatInputModule,
-    // MatRippleModule
+    FileUploadModule,
+    
     ],
-  providers: [ProductService, RegisterService, LoginService, OrderService, AdminService],
+  providers: [ProductService, RegisterService, LoginService, OrderService, AdminService, CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

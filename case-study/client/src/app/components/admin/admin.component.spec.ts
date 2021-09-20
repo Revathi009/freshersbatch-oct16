@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClientModule } from '@angular/common/http';
 import { AdminComponent } from './admin.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('AdminComponent', () => {
   let component: AdminComponent;
@@ -8,6 +11,12 @@ describe('AdminComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [
+        HttpClientModule,
+        HttpClientTestingModule,
+        RouterTestingModule,
+        ReactiveFormsModule
+      ],
       declarations: [ AdminComponent ]
     })
     .compileComponents();

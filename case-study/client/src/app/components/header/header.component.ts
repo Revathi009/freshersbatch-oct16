@@ -13,7 +13,6 @@ export class HeaderComponent implements OnInit {
 
   public totalItem : number = 0;
   public Item: number = 0;
-  public searchTerm: string = '';
   username = '';
 
   constructor(private _cartService: CartService,
@@ -38,10 +37,10 @@ export class HeaderComponent implements OnInit {
   //   this.Item = res.length;
   // })
 
-  search(event: any){
-    this.searchTerm = (event.target as HTMLInputElement).value;
-    this._cartService.search.next(this.searchTerm);
-  }
+  // search(event: any){
+  //   this.searchTerm = (event.target as HTMLInputElement).value;
+  //   this._cartService.search.next(this.searchTerm);
+  // }
 
   logoutUser(){
     localStorage.removeItem('token');

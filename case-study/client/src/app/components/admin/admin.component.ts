@@ -22,7 +22,6 @@ export class AdminComponent implements OnInit {
   selectedFile:File = null;
   form: NgForm;
   imageData: string;
-  NgForm: any;
   constructor(public adminService: AdminService) { 
 
   //   this.uploader.onCompleteItem = (item:any, response:any , status:any, headers:any) => {
