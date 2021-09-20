@@ -12,7 +12,7 @@ const ProductSchema = new Schema(
       name: {
         type: String
       },
-      image: {
+      imagePath: {
         type: String
       },
       price: {

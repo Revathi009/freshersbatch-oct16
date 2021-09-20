@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup, NgForm } from '@angular/forms';
 import { AdminService } from 'src/app/services/admin.service';
 import { Admin } from 'src/app/services/admin.model';
 import { Observable } from 'rxjs';
+import { FileSelectDirective, FileUploader } from 'ng2-file-upload';
+
 declare var M: any;
 
+// const uri = 'http://localhost:3000/api/upload';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -14,8 +17,18 @@ declare var M: any;
 })
 export class AdminComponent implements OnInit {
 
+  // uploader:FileUploader = new FileUploader({url:uri});
+  attachmentList:any = [];
   selectedFile:File = null;
-  constructor(public adminService: AdminService) { }
+  form: NgForm;
+  imageData: string;
+  NgForm: any;
+  constructor(public adminService: AdminService) { 
+
+  //   this.uploader.onCompleteItem = (item:any, response:any , status:any, headers:any) => {
+  //     this.attachmentList.push(JSON.parse(response));
+  // }
+  }
 
   selectedProduct: Admin;
 
@@ -23,7 +36,7 @@ export class AdminComponent implements OnInit {
     //debugger;
     this.resetForm();
     this.refreshProductList();
-    
+
   }
   resetForm(form?: NgForm) {
     if (form)
@@ -31,7 +44,7 @@ export class AdminComponent implements OnInit {
     this.adminService.selectedProduct = {
       _id: "",
       name: "",
-      image: "",
+      imagePath: "",
       price: null,
       category: "",
       description: "",
@@ -54,6 +67,10 @@ export class AdminComponent implements OnInit {
           M.toast({ html: 'Updated successfully', classes: 'rounded' });
         });
       }
+
+      this.adminService.addImage(this.form.value.image);
+      this.imageData = null;
+      
     }
     
 
@@ -79,14 +96,18 @@ export class AdminComponent implements OnInit {
     }
 
     onSelectedFile(event) {
-      this.selectedFile = <File>event.target.files[0];
-      console.log(event);
-
+      const file = (event.target as HTMLInputElement).files[0];
+      this.form.value({image: file});
+      const allowedMimeTypes = ["image/png", "image/jpeg", "image/jpg"];
+      if(file && allowedMimeTypes.includes(file.type)){
+        const reader = new FileReader();
+        reader.onload = () => {
+          this.imageData = reader.result as string;
+        };
+        reader.readAsDataURL(file);
+      }
     }
 
-    onUpload(prod){
-      const fd = new FormData();
-      fd.append('image', this.selectedFile, this.selectedFile.name);
-      this.adminService.uploadImage = prod;
-    }
   }
+
+  // event.getElementById("file-id").files[0]; 

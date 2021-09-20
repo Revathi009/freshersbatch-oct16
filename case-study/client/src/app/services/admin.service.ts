@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, ErrorHandler } from '@angular/core';
 import { Observable,throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -13,10 +13,14 @@ export class AdminService {
   selectedProduct: Admin;
   products: Admin[];
   readonly baseURL = 'http://localhost:3000/api/products';
+  private options = { headers: new HttpHeaders().set('Content-Type', 'undefined') };
+
+
   constructor(private http: HttpClient) { }
 
   postProduct(prod: Admin) {
     return this.http.post(this.baseURL, prod);
+
   }
 
   getProductList() {
@@ -40,9 +44,11 @@ export class AdminService {
     return this.http.delete(this.baseURL + `/${_id}`);
   }
 
-  uploadImage(prod: Admin){
-    return this.http.post(this.baseURL, prod);
-  }
+ addImage(image: File): void{
+  const imageData = new FormData();
+  imageData.append("image", image);
+  this.http.post(this.baseURL, imageData, this.options)
+ }
 
   ngOnInit(){
   }

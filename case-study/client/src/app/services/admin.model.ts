@@ -1,7 +1,7 @@
 export class Admin {
     _id: string;
     name: string;
-    image: string;
+    imagePath: string;
     price: number;
     category: string;
     description: string;

@@ -10,12 +10,6 @@ const OrderSchema = new Schema(
       ProductID: {
         type: mongoose.SchemaTypes.ObjectId
       },
-      initialDate: {
-        type: Date
-      },
-      deliveryDate: {
-        type: Date
-      }
     });
 
 

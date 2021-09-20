@@ -21,6 +21,7 @@ import { FilterPipe } from './shared/filter.pipe';
 import { OrderService } from './services/order.service';
 import { AdminComponent } from './components/admin/admin.component';
 import { AdminService } from './services/admin.service';
+import { FileUploadModule } from 'ng2-file-upload';
 // import { MatButtonModule, MatFormFieldModule, MatInputModule, MatRippleModule } from '@angular/material';
 
 @NgModule({
@@ -44,6 +45,7 @@ import { AdminService } from './services/admin.service';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    FileUploadModule
     // MatButtonModule,
     // MatFormFieldModule,
     // MatInputModule,
