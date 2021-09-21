@@ -153,9 +153,7 @@ const Order = require('./orderModel');
 router.post("/order", (req,res) => {
     var newOrder = {
         UserID: mongoose.Types.ObjectId(req.body.UserID),
-        ProductID: mongoose.Types.ObjectId(req.body.ProductID),
-        initialDate: req.body.initialDate,
-        deliveryDate: req.body.deliveryDate
+        ProductID: mongoose.Types.ObjectId(req.body.ProductID)
     }
     var order = new Order(newOrder)
 
