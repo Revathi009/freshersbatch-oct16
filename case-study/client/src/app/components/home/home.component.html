@@ -31,7 +31,7 @@
 
 <button mat-raised-button color="primary" (click)="logout()">Logout</button>
 <div class="row">
-	<div class="column" *ngFor= "let p of products">
+	<div class="column" *ngFor= "let p of lstproducts">
 		<div class="card">
   			<h1>{{p.name}}</h1>
   			<img class="fiximage" [src]="p.image" alt="Denim Jeans" style="width:100%">

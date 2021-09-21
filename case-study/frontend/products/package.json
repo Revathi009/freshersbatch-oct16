@@ -1,0 +1,21 @@
+{
+  "name": "products",
+  "version": "1.0.0",
+  "description": "",
+  "main": "product.js",
+  "dependencies": {
+    "axios": "^0.21.4",
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
+    "font-awesome": "^4.7.0",
+    "nodemon": "^2.0.12"
+  },
+  "devDependencies": {
+    "mocha": "^9.1.1"
+  },
+  "scripts": {
+    "test": "mocha --timeout 100000000"
+  },
+  "author": "",
+  "license": "ISC"
+}
