@@ -13,6 +13,7 @@ app.use(bodyParser.json());
 app.use(cors({origin: 'http://localhost:4200'}))
 
 app.use('/api', require("./productRouter"));
+app.use('/api', require("./adminProduct"));
 
 //database connection
 const URI = process.env.MONGODB_URL
@@ -27,7 +28,7 @@ mongoose.connect(URI, {
 })
 
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 8000
 
 module.exports = app.listen(PORT, () =>{
     console.log('Server is running on port', PORT)

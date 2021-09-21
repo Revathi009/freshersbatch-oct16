@@ -4,6 +4,7 @@ import { AdminService } from 'src/app/services/admin.service';
 import { Admin } from 'src/app/services/admin.model';
 import { Observable } from 'rxjs';
 import { FileSelectDirective, FileUploader } from 'ng2-file-upload';
+import { ImageService } from 'src/app/services/image.service';
 
 declare var M: any;
 
@@ -22,7 +23,8 @@ export class AdminComponent implements OnInit {
   selectedFile:File = null;
   form: NgForm;
   imageData: string;
-  constructor(public adminService: AdminService) { 
+  constructor(public adminService: AdminService,
+              public imageService: ImageService) { 
 
   //   this.uploader.onCompleteItem = (item:any, response:any , status:any, headers:any) => {
   //     this.attachmentList.push(JSON.parse(response));
@@ -43,12 +45,14 @@ export class AdminComponent implements OnInit {
     this.adminService.selectedProduct = {
       _id: "",
       name: "",
-      imagePath: "",
+      image: "",
       price: null,
       category: "",
       description: "",
     }
   }
+
+ 
   
 
     onSubmit(form: NgForm) {
@@ -105,6 +109,12 @@ export class AdminComponent implements OnInit {
         };
         reader.readAsDataURL(file);
       }
+    }
+
+    sub(){
+      this.imageService.sub((resp: any) => {
+            console.log("image submitted", resp)
+          })
     }
 
   }

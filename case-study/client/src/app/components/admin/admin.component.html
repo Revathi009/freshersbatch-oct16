@@ -1,35 +1,126 @@
 <div class="section">
   <div class="container">
-      <div class="row">
-          <div class="col-md-9">
-                <div class="form">
-                  <div class="section-title">
-                    <form #adminForm="ngForm" (ngSubmit)="onSubmit(adminForm)" enctype="multipart/form-data">
-                    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="adminService.selectedProduct._id">
-                    <div class="form-group">
-                      <input class="form-control" type="text" name="name" #name="ngModel" [(ngModel)]="adminService.selectedProduct.name" placeholder="Enter product name" required>
-                    </div>
-                    <div class="form-group">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="form">
+          <div class="section-title">
+            <form #adminForm="ngForm" (ngSubmit)="onSubmit(adminForm)" enctype="multipart/form-data">
+              <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="adminService.selectedProduct._id">
+                <div class="form-group">
+                  <input class="form-control" type="text" name="name" #name="ngModel" [(ngModel)]="adminService.selectedProduct.name" placeholder="Enter product name" required>
+                </div>
+                    <!-- <div class="form-group">
                       <input class="form-control" type="file" name="name" #name="ngModel" [(ngModel)]="adminService.selectedProduct.imagePath" (change)="onSelectedFile($event)" placeholder="Add image" required>
                     <div *ngIf="imageData">
                       <img [src]="imageData" [alt]="form.value.name">
                     </div>
+                  </div> -->
+                <div class="form-group">
+                  <input class="form-control" type="text" name="image" #name="ngModel" [(ngModel)]="adminService.selectedProduct.image" placeholder="Add image" required>
+                </div>
+                <div class="form-group">
+                  <input class="form-control" type="text" name="price" #name="ngModel" [(ngModel)]="adminService.selectedProduct.price" placeholder="Enter price" required>
+                </div>
+                <div class="form-group">
+                  <input class="form-control" type="text" name="category" #name="ngModel" [(ngModel)]="adminService.selectedProduct.category" placeholder="Enter Category" required>
+                </div>
+                <div class="form-group">
+                  <input class="form-control" type="text" name="description" #name="ngModel" [(ngModel)]="adminService.selectedProduct.description" placeholder="Enter description" required>
+                </div>
+                <div class="input-field col s12">
+                  <button class="btn btn btn-danger" type="button" (click)="resetForm(adminForm)">Reset</button>
+                  <button style="margin-left: 7px" class="btn btn btn-primary" type="submit" [disabled]="!adminForm.valid">Submit</button>
+                </div>
+            </form>
+
+            <!DOCTYPE html>
+            <html lang="en">
+              <head>
+                <meta charset="UTF-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+                <title>Node.js upload images</title>
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+                <style>
+                  div.preview-images > img {
+                    width: 30%;
+                  }
+                </style>
+              </head>
+
+              <body>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-sm-8 mt-3">
+                      <h4></h4>
+
+                      <form class="mt-4"
+                        action="/upload"
+                        method="POST"
+                        enctype="multipart/form-data"
+                      >
+                        <div class="form-group">
+                          <input
+                            type="file"
+                            name="file"
+                            id="input-files"
+                            class="form-control-file border"
+                          />
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </form>
+                    </div>
                   </div>
-                    <div class="form-group">
-                      <input class="form-control" type="text" name="price" #name="ngModel" [(ngModel)]="adminService.selectedProduct.price" placeholder="Enter price" required>
+                  <hr />
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="preview-images"></div>
                     </div>
-                    <div class="form-group">
-                      <input class="form-control" type="text" name="category" #name="ngModel" [(ngModel)]="adminService.selectedProduct.category" placeholder="Enter Category" required>
-                    </div>
-                    <div class="form-group">
-                      <input class="form-control" type="text" name="description" #name="ngModel" [(ngModel)]="adminService.selectedProduct.description" placeholder="Enter description" required>
-                    </div>
-                    <div class="input-field col s12">
-                      <button class="btn btn btn-danger" type="button" (click)="resetForm(adminForm)">Reset</button>
-                      <button style="margin-left: 7px" class="btn btn btn-primary" type="submit" [disabled]="!adminForm.valid">Submit</button>
-                    </div>
-                    </form>
                   </div>
+                </div>
+
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+                <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+                <script>
+                  $(document).ready(function() {
+                    let imagesPreview = function(input, placeToInsertImagePreview) {
+                      if (input.files) {
+                        let filesAmount = input.files.length;
+                        for (i = 0; i < filesAmount; i++) {
+                          let reader = new FileReader();
+                          reader.onload = function(event) {
+                            $($.parseHTML("<img>"))
+                              .attr("src", event.target.result)
+                              .appendTo(placeToInsertImagePreview);
+                          };
+                          reader.readAsDataURL(input.files[i]);
+                        }
+                      }
+                    };
+                    $("#input-files").on("change", function() {
+                      imagesPreview(this, "div.preview-images");
+                    });
+                  });
+                </script>
+              </body>
+            </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+                
+                </div>
                 </div>
           </div>   
             <div class="ng-container">
@@ -48,7 +139,7 @@
                   </thead>
                   <tr *ngFor="let prod of adminService.products">
                     <td>{{prod.name}}</td>
-                    <td>{{prod.imagePath}} alt=""></td>
+                    <td><img style="width: 120px;" src="{{prod.image}}" alt=""></td>
                     <td>{{prod.price}}</td>
                     <td>{{prod.category}}</td>
                     <td>{{prod.description}}</td>
@@ -69,13 +160,13 @@
                       </td>
                       <td>
 
-                      <button> 
+                      <!-- <button> 
                         <a class="action-btn">
                           <div class="up">
                           <i class="upload">Upload</i>
                         </div>
                         </a>
-                      </button> 
+                      </button>  -->
                       
                       <!-- <div id="fileSelector">
                         <input type="file" name="fileUplaod" id="fileUpload"
@@ -110,8 +201,6 @@
       </div>
   </div>
 </div>
-
-
 
 
 

@@ -19,10 +19,10 @@ export class CheckoutComponent implements OnInit {
   constructor(private _orderService: OrderService,
     private _router: Router,
     private _cartSevice: CartService) { 
-
+      this.ordernow();
       render(
         {
-          id: "#myPaypalButtons",
+          id: "#myPaypalButton",
           currency: "USD",
           value: "100.00",
           onApprove: (details) => {
@@ -47,17 +47,17 @@ export class CheckoutComponent implements OnInit {
     this._cartSevice.removeAllCart();
   }
 
-  // this.ordernow();
 
 
-  // ordernow(){
-  //   this._orderService.submitOrder((resp: any) => {
-  //     console.log("Response from api", resp)
-  //   })
-  //   .subscribe(
-  //     data => this.orderMessage = "Order is created"
-  //     // error => this.orderMessage = "Error"
+
+  ordernow(){
+    this._orderService.submitOrder((resp: any) => {
+      console.log("Response from api", resp)
+    })
+    .subscribe(
+      data => this.orderMessage = "Order is created"
+      // error => this.orderMessage = "Error"
       
-  //   )
-  // }
+    )
+  }
 }

@@ -19,7 +19,7 @@ describe('Products API', () => {
                 .end((err, response) => {
                     response.should.have.status(200);
                     response.body.should.be.a('array');
-                    response.body.length.should.be.eq(1);
+                    response.body.length.should.be.eq(10);
                 done();
                 });
         });
@@ -92,7 +92,7 @@ describe('Products API', () => {
                 .end((err, response) => {
                     response.should.have.status(201);
                     response.body.should.be.a('object');
-                    response.body.should.have.property('id').eq(4);
+                    response.body.should.have.property('id').eq(10);
                     response.body.should.have.property('name').eq("name");
                     response.body.should.have.property('image').eq("image");
                     response.body.should.have.property('price').eq("200");

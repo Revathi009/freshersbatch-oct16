@@ -150,8 +150,11 @@
                         I've read and accept the <a href="#">terms & conditions</a>
                     </label>
                 </div>
-                <a href="#" class="primary-btn order-submit">Place order</a>
-                <a id="myPaypalButtons" class="btn order-submit"></a>
+                <!-- <a href="#" class="primary-btn order-submit">Place order</a>
+                <a id="myPaypalButtons" class="btn order-submit"></a> -->
+                <button class="primary-btn order-submit (click)=ordernow()">Place order</button>
+                <div style="text-align: center;" class="h4 mb-4">                
+                <a id="myPaypalButton" class="btn order-submit"></a></div>
             </div>
             <!-- /Order Details -->
         </div>
@@ -161,10 +164,9 @@
 </div>
 <!-- /SECTION -->
 
-<button class="btn btn btn-success">Button</button>
+<!-- <button class="primary-btn order-submit (click)=ordernow()">Place order</button>
 <div style="text-align: center;" class="h4 mb-4">                
-    {{orderMessage}}
-</div>
+    <a id="myPaypalButtons" class="btn order-submit"></a></div> -->
         
         
         

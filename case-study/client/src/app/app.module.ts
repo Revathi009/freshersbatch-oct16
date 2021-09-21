@@ -21,6 +21,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { AdminService } from './services/admin.service';
 import { FileUploadModule } from 'ng2-file-upload';
 import { CartService } from './services/cart.service';
+import { ImageService } from './services/image.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { CartService } from './services/cart.service';
     FileUploadModule,
     
     ],
-  providers: [ProductService, RegisterService, LoginService, OrderService, AdminService, CartService],
+  providers: [ProductService, RegisterService, LoginService, OrderService, AdminService, CartService, ImageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

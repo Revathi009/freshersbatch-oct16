@@ -12,7 +12,7 @@ export class AdminService {
 
   selectedProduct: Admin;
   products: Admin[];
-  readonly baseURL = 'http://localhost:3000/api/products';
+  readonly baseURL = 'http://localhost:8000/api/products';
   private options = { headers: new HttpHeaders().set('Content-Type', 'undefined') };
 
 
@@ -49,6 +49,8 @@ export class AdminService {
   imageData.append("image", image);
   this.http.post(this.baseURL, imageData, this.options)
  }
+
+
 
   ngOnInit(){
   }

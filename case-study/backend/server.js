@@ -5,7 +5,8 @@ const cors = require('cors')
 const fileUpload = require('express-fileupload')
 const cookieParser = require('cookie-parser')
 const path = require('path')
-const Grid = require('gridfs-stream')
+// const Grid = require('gridfs-stream')
+
 
 const app = express()
 app.use(express.json())
@@ -16,22 +17,24 @@ app.use(fileUpload({
 }))
 
 
+
 app.use('/user', require("./routes/userRouter"))
 app.use('/api', require("./routes/categoryRouter"))
 app.use('/api', require("./routes/productRouter"))
 app.use('/api', require("./routes/orderRouter"))
 app.use('/api', require("./routes/adminProduct"))
-app.use('/api', require("./routes/fileRouter"))
+// app.use('/api', require("./routes/fileRouter"))
+app.use('/api', require("./routes/web"))
 app.use('/images', express.static(path.join('images')));
 
 
-let gfs;
+// let gfs;
 
-const conn = mongoose.connection;
-conn.once("open", function(){
-    gfs = Grid(conn.db, mongoose.mongo);
-    gfs.collection("photos");
-})
+// const conn = mongoose.connection;
+// conn.once("open", function(){
+//     gfs = Grid(conn.db, mongoose.mongo);
+//     gfs.collection("photos");
+// })
 
 const URI = process.env.MONGODB_URL
 mongoose.connect(URI, {

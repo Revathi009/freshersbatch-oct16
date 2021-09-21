@@ -1,7 +1,7 @@
 import { string, boolean, validate } from 'joi';
 
 const taskSchema = {
-    name: string().min(1).required(),
+    name: string().min(10).required(),
     completed: boolean()
 };
 

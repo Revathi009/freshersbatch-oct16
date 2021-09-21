@@ -9,7 +9,7 @@ export class RegisterService {
   constructor(private _http: HttpClient) { }
 
   submitRegister(body:any){
-    return this._http.post('http://localhost:3000/user/register', body, {
+    return this._http.post('http://localhost:4000/user/register', body, {
       observe:'body'
     })
   }

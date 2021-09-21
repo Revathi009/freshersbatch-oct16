@@ -11,7 +11,7 @@ app.use(express.json())
 app.use(bodyParser.json());
 app.use(cors({origin: 'http://localhost:4200'}))
 
-app.use('/api', require("./userRouter"));
+app.use('/user', require("./userRouter"));
 
 //database connection
 const URI = process.env.MONGO_URL

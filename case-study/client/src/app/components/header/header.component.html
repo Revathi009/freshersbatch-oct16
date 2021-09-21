@@ -117,7 +117,9 @@
                                 </div> -->
                                 <div class="cart-btns">
                                     <a routerLink="/cart">View Cart</a>
-                                    <a routerLink="/checkout">Checkout <i class="fa fa-arrow-circle-right"></i></a>
+                                    <!-- <a routerLink="/checkout">Checkout <i class="fa fa-arrow-circle-right"></i></a> -->
+                                    <a *ngIf="loggedIn()" routerLink="/checkout" routerLinkActive="active">Checkout<i class="fa fa-arrow-circle-right"></i></a>
+
                                 </div>
                             </div>
                         </div>

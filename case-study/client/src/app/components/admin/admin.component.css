@@ -9,3 +9,6 @@
 .up{
     padding-right: 2%;
 }
+div.preview-images > img {
+    width: 30%;
+  }
