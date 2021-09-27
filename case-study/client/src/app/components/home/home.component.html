@@ -1,5 +1,5 @@
 <!-- <h1>Hello {{username}}</h1> <h2>you have successfully logged in.</h2> -->
-<div class="card-top container-fluid">
+<!-- <div class="card-top container-fluid">
     <div class="container d-flex">
         <div class="item">
             <a>
@@ -26,11 +26,11 @@
             </a>
         </div>
     </div>
-</div>
+</div> -->
 
 
 <!-- <button mat-raised-button color="primary" (click)="logout()">Logout</button> -->
-<div class="row">
+<!-- <div class="row">
 	<div class="column" *ngFor= "let p of lstproducts">
 		<div class="card">
   			<h1>{{p.name}}</h1>
@@ -39,10 +39,23 @@
  			<p>Category - {{p.category}}</p>
   			<p>{{p.description}}</p>
   			<p><button class="btn btn-primary" (click)="addtoCart(p)">Add to Cart</button></p>
-  			<!-- <p><button>Move to wish list</button></p> -->
+  			<p><button>Move to wish list</button></p>
         </div>
 	</div>
+</div> -->
+
+<div class="container-fluid">
+    <hr>
+    <div class="row">
+        <div class="col-lg-2 col-sm-4 col-md-3 border border-top-0 border-left-0">
+            <app-filter></app-filter>
+        </div>
+        <div class="col-lg-10 col-sm-8 mx-auto col-md-9">
+            <app-store></app-store>
+        </div>
+    </div>
 </div>
+
 
 
 

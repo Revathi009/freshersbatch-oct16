@@ -1,4 +1,4 @@
-.card {
+/* .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     max-width: 300px;
     margin: auto;
@@ -33,7 +33,7 @@
     /* padding-right: 60%; */
 
 
-.column {
+/* .column {
     float: left;
     width: 25%;
     padding: 0 10px;
@@ -64,10 +64,10 @@
 
 .item a:hover {
   color: blue;
-}
+} */
 
 
-.card {
+/* .card {
   padding: 20px;
   margin: 50px;
 }
@@ -82,9 +82,18 @@
 .card img:hover {
   transition: 0.3s ease-in-out;
   transform: scale(1.1);
-}
+} */
+ 
+/* .container-fluid {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+} */
 
+/* Remove extra left and right margins, due to padding */
+/* .row {margin: 0 -5px;} */
 
+/* Clear floats after the columns */
 
 
 

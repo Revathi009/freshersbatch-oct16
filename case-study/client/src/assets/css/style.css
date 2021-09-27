@@ -2192,3 +2192,15 @@ textarea.input {
     margin-top: 10px;
   }
 }
+
+
+/* .row>* {
+
+  flex-shrink: 0;
+  width: 50%  ;
+  max-width: 100%;
+  /* padding-right: calc(val(--bs-gutter-x) * .5);
+  padding-left: calc(val(--bs-gutter-x) * .5); */
+  /* margin-top: var(--bs-gutter-y);
+}  */
+

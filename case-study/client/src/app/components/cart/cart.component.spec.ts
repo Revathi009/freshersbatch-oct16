@@ -3,6 +3,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { HttpClientModule } from '@angular/common/http';
 import { CartComponent } from './cart.component';
 import { RouterTestingModule } from '@angular/router/testing';
+import { BsModalService } from 'ngx-bootstrap/modal';
 
 describe('CartComponent', () => {
   let component: CartComponent;
@@ -13,9 +14,12 @@ describe('CartComponent', () => {
       imports: [
         HttpClientModule,
         HttpClientTestingModule,
-        RouterTestingModule
+        RouterTestingModule,
+        
+
       ],
-      declarations: [ CartComponent ]
+      declarations: [ CartComponent ],
+      providers: [BsModalService]
     })
     .compileComponents();
   });

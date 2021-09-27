@@ -4,18 +4,18 @@
     <div id="top-header">
         <div class="container py-2">
             <ul class="header-links pull-left">
-                <li><a href="#"><i class="fa fa-phone"></i> +021-95-51-84</a></li>
-                <li><a href="#"><i class="fa fa-envelope-o"></i> email@email.com</a></li>
-                <li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
+                <li><a href="#" *ngIf='isLoggedIn'><i class="fa fa-phone"></i>Store</a></li>
+                <li><a routerLink="/admin"  routerLinkActive="active" *ngIf='isAdmin'><i class="fa fa-envelope-o"></i>Admin Dashboard</a></li>
+                <!-- <li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li> -->
 
             </ul>
             <ul class="header-links pull-right">
                 <!-- <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li> -->
-                <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
-                <li><a *ngIf="!loggedIn()" routerLink="/register" routerLinkActive="active"><i class="fa fa-user-o"></i>Register</a></li>
-                <li><a *ngIf="!loggedIn()" routerLink="/login" routerLinkActive="active"><i class="fa fa-arrow-circle-right"></i>Login</a></li>
-                <li><a *ngIf="loggedIn()" routerLink="/login" (click)="logoutUser()"><i class="fa fa-arrow-circle-right"></i>Logout</a></li>
-                <li><a routerLink="/admin"><i class="fa fa-user-o"></i> Admin</a></li>
+                <li><a *ngIf='isLoggedIn' routerLink="/user-orders"><i class="fa fa-user-o"></i>Order</a></li>
+                <li><a *ngIf='!isLoggedIn' routerLink="/signup" routerLinkActive="active"><i class="fa fa-user-o"></i>Register</a></li>
+                <li><a *ngIf='!isLoggedIn' routerLink="/login" routerLinkActive="active"><i class="fa fa-arrow-circle-right"></i>Login</a></li>
+                <li><a routerLink="/login" *ngIf='isLoggedIn' (click)='logout()'><i class="fa fa-arrow-circle-right"></i>Logout</a></li>
+                <li><a routerLink="/admin"><i></i></a></li>
 
             </ul>
         </div>
@@ -82,10 +82,10 @@
 
                         <!-- Cart -->
                         <div class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" *ngIf='isLoggedIn'>
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>Your Cart</span>
-                                <div class="qty">{{totalItem}}</div>
+                                <div class="qty">{{numberOfItems}}</div>
                             </a>
                             <div class="cart-dropdown">
                                 <!-- <div class="cart-list">
@@ -116,9 +116,9 @@
                                     <h5>SUBTOTAL: {{ 0 | currency}}</h5>
                                 </div> -->
                                 <div class="cart-btns">
-                                    <a routerLink="/cart">View Cart</a>
+                                    <a routerLink="/cart" *ngIf='isLoggedIn'>View Cart</a>
                                     <!-- <a routerLink="/checkout">Checkout <i class="fa fa-arrow-circle-right"></i></a> -->
-                                    <a *ngIf="loggedIn()" routerLink="/checkout" routerLinkActive="active">Checkout<i class="fa fa-arrow-circle-right"></i></a>
+                                    <a routerLink="/checkout" *ngIf='isLoggedIn' routerLinkActive="active">Checkout<i class="fa fa-arrow-circle-right"></i></a>
 
                                 </div>
                             </div>

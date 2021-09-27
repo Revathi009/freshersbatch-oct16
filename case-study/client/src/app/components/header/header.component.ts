@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
-import { LoginService } from 'src/app/services/login.service';
-import { RegisterService } from 'src/app/services/register.service';
-import { Router } from '@angular/router';
+import { Router, NavigationStart } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -11,49 +10,71 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  public totalItem : number = 0;
-  public Item: number = 0;
-  username = '';
+ 
+  numberOfItems : number = 0;
+  isLoggedIn = false;
+  isAdmin: boolean = false;
+  isAdminUrl = false;
 
   constructor(private _cartService: CartService,
-              private _loginservice: LoginService,
-              private _registerService: RegisterService,
-              private _router: Router) {
-    this._loginservice.getUserName()
-    .subscribe(
-                data => this.username= data.toString(),
-                error => this._router.navigate(['../login'])
-              )
+              private _userService: UserService,
+              private router: Router) {
+
+                router.events.subscribe({
+                  next : (event)=>{
+                    console.log(event);
+                    
+                    if(event instanceof NavigationStart)
+                    {
+                      let url = (<NavigationStart>event).url
+                        this.isAdminUrl = url.includes('/admin')
+                    }
+                  }
+                })
+   
    }
 
   ngOnInit(): void {
-    this._cartService.getProducts().subscribe(res => {
-      this.totalItem = res.length;
-    });
+    // this._cartService.getProducts().subscribe(res => {
+    //   this.totalItem = res.length;
+    // });
+    this._cartService.cartObservable.subscribe({
+      next : (cart)=> {
+        console.log(cart)
+        this.numberOfItems = Object.keys(cart).length
+      }
+    })
 
-  }
+  this._userService.loginObservable.subscribe(
+    {
+      next : ()=>{
 
-  // this._cartService.getProducts().subscribe(res => {
-  //   this.Item = res.length;
-  // })
+        let token = this._userService.getToken();
+        if(token!= ''){
+          this.cheakAdmin()
+          this.isLoggedIn = true;
+        }else{
+          this.isLoggedIn = false;
+        }
+        console.log(this.isLoggedIn);
+        
+      }
+    }
+  )
+}
 
-  // search(event: any){
-  //   this.searchTerm = (event.target as HTMLInputElement).value;
-  //   this._cartService.search.next(this.searchTerm);
-  // }
+cheakAdmin(){
+  // cheak user is admin or not 
+  this._userService.isAdmin().subscribe(
+    (isAdmin)=>{
+      this.isAdmin = isAdmin
+    }
+  )
+}
 
-  logoutUser(){
-    localStorage.removeItem('token');
-  }  
-
-  getToken(){
-    return localStorage.getItem('token');
-  }
-
-  loggedIn(){
-    return !!localStorage.getItem('token');
-  }
-
-
-
+logout(){
+  // alert('')
+  this._userService.logout()
+  this.router.navigate(['login'])
+}
 }

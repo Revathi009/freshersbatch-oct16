@@ -1,31 +1,65 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { CartService } from './cart.service';
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { UserService } from 'src/app/services/user.service';
+import { map } from 'rxjs/operators';
+import { Order } from 'src/app/models/order';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
+  orderUrl = 'http://localhost:3000/api/orders'
+  userAllOrderUrl = "http://localhost:3000/api/orders"
+  
+  constructor(private http : HttpClient , private userService : UserService ) { }
 
-  constructor(private _http: HttpClient) { }
+  placeOrder(orderInfo : OrderInfo){
+    let headers = new HttpHeaders({
+      'authorization' : this.userService.getToken()
+    })
+   
+    return this.http.post(this.orderUrl , orderInfo , {headers} )
+  }
 
-   public order: any;
-
-    submitOrder(body:any){
-      return this._http.post('http://localhost:5000/api/order', body, {
-        observe:'body'
-      })
+  changeStatus(data : {status : string} , orderId : string){
+    let headers = new HttpHeaders({
+      'authorization' : this.userService.getToken()
+    })
+  
+    return this.http.patch(this.orderUrl+'/'+orderId , data , {headers} )
+  }
+  
+  getUserOrders(all ?: boolean ){
+    let url = this.orderUrl;
+    if(all){
+      url = url + '?all=true'
     }
-
-    getOrder()
-    {
-        return this.order.slice();
-    }
-
- 
-    addToOrder(orderitems: any)
-      {
-          this.order.push(orderitems);
+    let headers = new HttpHeaders({
+      'authorization' : this.userService.getToken()
+    })
+   
+    return this.http.get(url, {headers}).pipe(
+      map((result : {count : number , orders : Order[]})=>{
+        return result.orders
       }
+      )
+    )
+  }
+
+  getAdminOrders(){
+    return this.getUserOrders(true)
+  }
+}
+
+export interface OrderInfo {
+  firstName: string;
+  lastName: string;
+  address: string;
+  products: ProductInfo[];
+}
+
+export interface ProductInfo {
+  productId: string;
+  quantity: number;
+  price: number;
 }
